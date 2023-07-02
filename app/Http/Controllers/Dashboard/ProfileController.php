@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Request\Dashboard\Profile\UpdateProfileRequest;
-use App\Http\Request\Dashboard\Profile\UpdateDetailUserRequest;
+use App\Http\Requests\Dashboard\Profile\UpdateProfileRequest;
+use App\Http\Requests\Dashboard\Profile\UpdateDetailUserRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
@@ -130,7 +130,7 @@ class ProfileController extends Controller
         } else {
             foreach ($data_profile['experience'] as $key => $value) {
                 if (isset($value)) {
-                    $experience_user = ExperienceUser;
+                    $experience_user = new ExperienceUser;
                     $experience_user->detail_user_id = $detail_user['id'];
                     $experience_user->experience = $value;
                     $experience_user->save();

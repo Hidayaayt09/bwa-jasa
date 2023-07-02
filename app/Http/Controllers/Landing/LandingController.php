@@ -130,7 +130,7 @@ class LandingController extends Controller
 
         $order = new Order;
         $order->buyer_id = $user_buyer;
-        $order->frrelancer_id = $service->user->id;
+        $order->freelancer_id = $service->user->id;
         $order->service_id = $service->id;
         $order->file = NULL;
         $order->note = NULL;
@@ -138,9 +138,9 @@ class LandingController extends Controller
         $order->order_status_id = 4;
         $order->save();
 
-        $order_detail = Order::where('id', $order->id)-first();
+        $order_detail = Order::where('id', $order->id)->first();
 
-        return redirect()->route('pages.landing.booking', $order->id);
+        return redirect()->route('detail.booking.landing', $order->id);
     }
 
     public function detail_booking($id){
