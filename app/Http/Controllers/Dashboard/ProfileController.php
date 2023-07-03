@@ -156,7 +156,7 @@ class ProfileController extends Controller
 
     public function delete(){
 
-        $get_user_photo = DetailUser::where('users_id', Auth::user()->id)->first;
+        $get_user_photo = DetailUser::where('users_id', Auth::user()->id)->first();
         $path_photo = $get_user_photo['photo'];
 
         $data = DetailUser::find($get_user_photo['id']);

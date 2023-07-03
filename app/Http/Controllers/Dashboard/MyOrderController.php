@@ -67,7 +67,7 @@ class MyOrderController extends Controller
      */
     public function show(Order $order)
     {   
-        $service = Service::where('id', $order['service_id'])->first;
+        $service = Service::where('id', $order['service_id'])->first();
 
         $thumbnail = ThumbnailService::where('service_id', $order['service_id'])->get();
         $advantage_service = AdvantageService::where('service_id', $order['service_id'])->get();
@@ -98,6 +98,8 @@ class MyOrderController extends Controller
     public function update(UpdateMyOrderRequest $request, Order $order)
     {
         $data = $request->all();
+
+        // dd($data);
 
         if (isset($data['file'])) {
             $data['file'] = $request->file('file')->store(
@@ -132,7 +134,7 @@ class MyOrderController extends Controller
         $order->save();
 
         toast()->success('Accept order has been success');
-        return back;
+        return back();
     }
 
     public function rejected($id){
@@ -142,7 +144,7 @@ class MyOrderController extends Controller
         $order->save();
 
         toast()->success('Reject order has been success');
-        return back;
+        return back();
     }
 
 

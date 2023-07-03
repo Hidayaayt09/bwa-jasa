@@ -38,13 +38,13 @@ class UpdateMyOrderRequest extends FormRequest
                 'nullable', 'integer',
             ],
             'file' => [
-                'required', 'mimes:zip', 'max:1024',
+                'nullable', 'mimes:zip', 'max:10000',
             ],
             'note' => [
                 'required', 'string', 'max:10000',
             ],
             'expired' => [
-                'required', 'date', 
+                'nullable', 'date', 
             ],
             'order_status_id' => [
                 'nullable', 'integer',
